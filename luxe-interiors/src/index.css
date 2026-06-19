@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+/* Design tokens */
+:root {
+  --font-sans: "Outfit", system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --bg: #faf7f2;
+  --bg-deep: #f1ebe2;
+  --ink: #1c1917;
+  --muted: #57534e;
+  --line: rgba(28, 25, 23, 0.1);
+  --accent: #b45309;
+  --accent-soft: rgba(180, 83, 9, 0.12);
+  --forest: #1a3a2f;
+  --glow-amber: rgba(251, 191, 36, 0.35);
+  --glow-sage: rgba(52, 211, 153, 0.2);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background: var(--bg);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+.display {
+  font-family: var(--font-display);
+}
+
+/* Ambient mesh orbs */
+@keyframes luxe-float-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(3%, -4%, 0) scale(1.06);
+  }
+}
+
+@keyframes luxe-float-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-4%, 3%, 0) scale(1.04);
+  }
+}
+
+@keyframes luxe-float-c {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(-2%, 2%, 0) rotate(6deg);
+  }
+}
+
+@keyframes luxe-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-luxe-float-a {
+  animation: luxe-float-a 22s ease-in-out infinite;
+}
+
+.animate-luxe-float-b {
+  animation: luxe-float-b 26s ease-in-out infinite;
+}
+
+.animate-luxe-float-c {
+  animation: luxe-float-c 30s ease-in-out infinite;
+}
+
+.animate-luxe-marquee {
+  animation: luxe-marquee 36s linear infinite;
+}
+
+@keyframes luxe-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-luxe-spin {
+  animation: luxe-spin 48s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-luxe-spin {
+    animation: none !important;
+  }
+}
+
+/* Grain overlay */
+.luxe-grain::after {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  opacity: 0.045;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}

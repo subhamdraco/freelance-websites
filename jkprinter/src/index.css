@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+:root {
+  --surface: #ffffff;
+  --canvas: #f8fafc;
+  --ink: #0f172a;
+  --muted: #64748b;
+  --line: #e2e8f0;
+  --brand: #7c3aed;
+  --brand-soft: rgba(124, 58, 237, 0.12);
+  --accent: #ea580c;
+  --accent-soft: rgba(234, 88, 12, 0.12);
+  --font-display: "Outfit", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background: var(--canvas);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+.display {
+  font-family: var(--font-display);
+}
+
+@keyframes jsk-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(2%, -3%) scale(1.03);
+  }
+}
+
+.animate-jsk-drift {
+  animation: jsk-drift 18s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-jsk-drift {
+    animation: none !important;
+  }
+}
